@@ -1,0 +1,66 @@
+{
+  "tasks": [
+    {
+      "id": "task-1",
+      "title": "Draft email to school team re: AAC trial",
+      "notes": "Summarize the trial progress, note improvements in communication, and outline next steps including parent feedback session.",
+      "section": "today",
+      "dueAt": "2025-11-10T14:00:00Z",
+      "remindAt": ["2025-11-10T13:00:00Z"],
+      "tags": ["email", "aac"],
+      "priority": 1,
+      "action": "email_draft",
+      "aiModel": "llama3.1",
+      "aiPrompt": "Write a clear, parent-friendly note summarizing trial progress and next steps. Keep to 150–200 words."
+    },
+    {
+      "id": "task-2",
+      "title": "Review quarterly budget",
+      "notes": "Check expenses for Q4, identify cost-saving opportunities.",
+      "section": "today",
+      "dueAt": "2025-11-10T16:00:00Z",
+      "remindAt": ["2025-11-10T15:30:00Z"],
+      "tags": ["finance", "admin"],
+      "priority": 2
+    },
+    {
+      "id": "task-3",
+      "title": "Daily standup - team sync",
+      "notes": "Every weekday at 9 AM",
+      "section": "today",
+      "dueAt": "2025-11-10T09:00:00Z",
+      "remindAt": ["2025-11-10T08:50:00Z"],
+      "recurrence": {
+        "cron": "0 9 * * MON-FRI",
+        "tz": "America/New_York"
+      },
+      "tags": ["meeting"],
+      "priority": 3
+    },
+    {
+      "id": "task-4",
+      "title": "Research new productivity tools",
+      "notes": "Explore AI-powered note-taking apps and task managers.",
+      "section": "upcoming",
+      "dueAt": "2025-11-15T10:00:00Z",
+      "tags": ["research", "tools"],
+      "priority": 2
+    },
+    {
+      "id": "task-5",
+      "title": "Plan holiday team outing",
+      "notes": "Brainstorm ideas, check team availability.",
+      "section": "upcoming",
+      "tags": ["team", "event"],
+      "priority": 3
+    },
+    {
+      "id": "task-6",
+      "title": "Learn Rust async/await patterns",
+      "notes": "Go through the Tokio tutorial and build a small project.",
+      "section": "someday",
+      "tags": ["learning", "rust"],
+      "priority": 3
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+.main-layout {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+.sections-container {
+  display: flex;
+  height: 100%;
+  gap: calc(var(--spacing-base) * 6);
+  padding: calc(var(--spacing-base) * 6);
+  min-width: 100%;
+}
+
+/* Custom smooth scrolling with physics */
+.main-layout {
+  scroll-snap-type: x proximity;
+}
+
+.main-layout::-webkit-scrollbar {
+  height: 6px;
+}

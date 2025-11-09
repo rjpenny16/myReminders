@@ -1,0 +1,126 @@
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.settings-panel {
+  width: 100%;
+  height: 70%;
+  background: var(--color-surface);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacing-base) * 4) calc(var(--spacing-base) * 6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.settings-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: calc(var(--spacing-base) * 6);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-base) * 6);
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-base) * 3);
+}
+
+.settings-section h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  padding-bottom: calc(var(--spacing-base) * 2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-checkbox {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-base) * 2);
+  cursor: pointer;
+}
+
+.settings-checkbox input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.settings-checkbox span {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-base) * 2);
+}
+
+.settings-field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.settings-field input,
+.settings-field select {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: calc(var(--spacing-base) * 2.5) calc(var(--spacing-base) * 3);
+  color: var(--color-text);
+  font-size: 0.9375rem;
+}
+
+.settings-field input:focus,
+.settings-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.settings-save-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: calc(var(--spacing-base) * 3) calc(var(--spacing-base) * 6);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.settings-save-btn:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
