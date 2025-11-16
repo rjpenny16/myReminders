@@ -1,94 +1,59 @@
 use crate::models::{AppSettings, Task, TaskInput};
 use crate::utils;
-use tauri::{AppHandle, Manager, State, Window};
-use uuid::Uuid;
+use tauri::Window;
+
+// NOTE: Database operations are handled via tauri-plugin-sql from the frontend
+// These commands are placeholders for non-DB operations or future enhancements
 
 #[tauri::command]
-pub async fn get_tasks(app: AppHandle) -> Result<Vec<Task>, String> {
-    let db_path = app
-        .path()
-        .app_data_dir()
-        .map_err(|e| e.to_string())?
-        .join("ultrawide_todo.db");
-
-    // Use tauri-plugin-sql to query
-    // For simplicity, we'll use a direct SQL approach
-    // In production, you'd want proper error handling
-
-    let query = "SELECT * FROM tasks WHERE completed_at IS NULL ORDER BY priority DESC, due_at ASC";
-
-    // Placeholder - actual implementation would use tauri-plugin-sql's query mechanism
-    // For now, return empty array
+pub async fn get_tasks() -> Result<Vec<Task>, String> {
+    // Database queries are now handled from the frontend using tauri-plugin-sql
+    // This command can be removed or used for additional backend logic
     Ok(vec![])
 }
 
 #[tauri::command]
-pub async fn create_task(task_input: TaskInput, app: AppHandle) -> Result<Task, String> {
-    let id = Uuid::new_v4().to_string();
-
-    let task = Task {
-        id: id.clone(),
-        title: task_input.title,
-        notes: task_input.notes,
-        section: task_input.section,
-        due_at: task_input.due_at,
-        remind_at: task_input.remind_at,
-        recurrence: task_input.recurrence,
-        tags: task_input.tags,
-        priority: task_input.priority,
-        completed_at: None,
-        action: task_input.action,
-        ai_model: task_input.ai_model,
-        ai_prompt: task_input.ai_prompt,
-        custom_command: task_input.custom_command,
-    };
-
-    // Insert into database
-    // Placeholder for actual SQL insert
-
-    Ok(task)
+pub async fn create_task(_task_input: TaskInput) -> Result<Task, String> {
+    // Database inserts are now handled from the frontend using tauri-plugin-sql
+    // This is a placeholder
+    Err("Use tauri-plugin-sql from frontend".to_string())
 }
 
 #[tauri::command]
-pub async fn update_task(task: Task, app: AppHandle) -> Result<Task, String> {
-    // Update task in database
-    // Placeholder
-    Ok(task)
+pub async fn update_task(_task: Task) -> Result<Task, String> {
+    // Database updates are now handled from the frontend using tauri-plugin-sql
+    Err("Use tauri-plugin-sql from frontend".to_string())
 }
 
 #[tauri::command]
-pub async fn delete_task(id: String, app: AppHandle) -> Result<(), String> {
-    // Delete task from database
-    // Placeholder
-    Ok(())
+pub async fn delete_task(_id: String) -> Result<(), String> {
+    // Database deletes are now handled from the frontend using tauri-plugin-sql
+    Err("Use tauri-plugin-sql from frontend".to_string())
 }
 
 #[tauri::command]
-pub async fn complete_task(id: String, app: AppHandle) -> Result<(), String> {
-    let now = chrono::Utc::now().to_rfc3339();
-    // Update task.completed_at in database
-    // Placeholder
-    Ok(())
+pub async fn complete_task(_id: String) -> Result<(), String> {
+    // Database updates are now handled from the frontend using tauri-plugin-sql
+    Err("Use tauri-plugin-sql from frontend".to_string())
 }
 
 #[tauri::command]
-pub async fn snooze_task(id: String, minutes: i32, app: AppHandle) -> Result<(), String> {
-    // Calculate new remind_at time and update task
-    // Placeholder
-    Ok(())
+pub async fn snooze_task(_id: String, _minutes: i32) -> Result<(), String> {
+    // Database updates are now handled from the frontend using tauri-plugin-sql
+    Err("Use tauri-plugin-sql from frontend".to_string())
 }
 
 #[tauri::command]
-pub async fn get_settings(app: AppHandle) -> Result<AppSettings, String> {
-    // Fetch settings from database or return default
+pub async fn get_settings() -> Result<AppSettings, String> {
+    // Database queries are now handled from the frontend using tauri-plugin-sql
+    // Return default for now
     Ok(AppSettings::default())
 }
 
 #[tauri::command]
-pub async fn set_settings(patch: serde_json::Value, app: AppHandle) -> Result<(), String> {
-    // Update settings in database
-    // Merge patch with existing settings
-    Ok(())
+pub async fn set_settings(_patch: serde_json::Value) -> Result<(), String> {
+    // Database updates are now handled from the frontend using tauri-plugin-sql
+    Err("Use tauri-plugin-sql from frontend".to_string())
 }
 
 #[tauri::command]
@@ -97,13 +62,9 @@ pub async fn launch_ollama_app() -> Result<bool, String> {
 }
 
 #[tauri::command]
-pub async fn clipboard_copy(text: String, app: AppHandle) -> Result<(), String> {
-    use tauri_plugin_clipboard_manager::ClipboardExt;
-
-    app.clipboard()
-        .write_text(text)
-        .map_err(|e| e.to_string())?;
-
+pub async fn clipboard_copy(_text: String) -> Result<(), String> {
+    // Clipboard operations are now handled by tauri-plugin-clipboard-manager from frontend
+    // This command can be used for additional logic if needed
     Ok(())
 }
 
