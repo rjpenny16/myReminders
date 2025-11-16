@@ -1,5 +1,6 @@
 import { useTaskStore } from '../../store/taskStore';
 import TaskSection from './TaskSection';
+import QuickAddBar from '../QuickAdd/QuickAddBar';
 import './MainLayout.css';
 
 const MainLayout = () => {
@@ -11,6 +12,7 @@ const MainLayout = () => {
 
   return (
     <div className="main-layout">
+      <QuickAddBar />
       <div className="sections-container">
         <TaskSection title="Today" tasks={todayTasks} section="today" />
         <TaskSection title="Upcoming" tasks={upcomingTasks} section="upcoming" />

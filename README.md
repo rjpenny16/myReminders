@@ -34,6 +34,20 @@ Built with **Tauri** (Rust + TypeScript), **React**, and **Tailwind CSS**.
 
 ### Installation
 
+**Option 1: Automated Setup (Recommended)**
+
+```bash
+# Linux/macOS
+./setup.sh
+
+# Windows (PowerShell)
+.\setup.ps1
+```
+
+The setup script will automatically check for prerequisites, install Rust if needed, and set up all dependencies.
+
+**Option 2: Manual Installation**
+
 ```bash
 # Clone the repository
 cd ultrawide-todo
@@ -94,11 +108,19 @@ Ollama will run at `http://127.0.0.1:11434` by default.
 
 | Key                | Action                          |
 | ------------------ | ------------------------------- |
-| `N`                | New task                        |
+| `N`                | New task (full form)            |
+| `Enter`            | Quick add task (from quick-add bar) |
 | `/`                | Quick search/filter (opens palette) |
 | `Cmd/Ctrl+K`       | Command palette                 |
 | `A`                | Theme editor                    |
 | `Esc`              | Close modals                    |
+
+### Quick Add Bar
+
+The quick-add bar at the top of the app allows you to rapidly create tasks:
+1. Type your task title in the input field
+2. Select the section (Today/Upcoming/Someday) using the buttons
+3. Press `Enter` to create the task instantly
 
 ---
 
