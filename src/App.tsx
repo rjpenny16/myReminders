@@ -8,10 +8,11 @@ import CommandPalette from './components/CommandPalette/CommandPalette';
 import AIPanel from './components/AI/AIPanel';
 import ThemeEditor from './components/Theme/ThemeEditor';
 import SettingsPanel from './components/Settings/SettingsPanel';
+import PomodoroTimer from './components/Pomodoro/PomodoroTimer';
 import './styles/App.css';
 
 function App() {
-  const { loadTasks, loadSettings } = useTaskStore();
+  const { loadTasks, loadSettings, pomodoroTimerOpen, setPomodoroTimerOpen } = useTaskStore();
   const { applyTheme, loadTheme } = useThemeStore();
 
   // Enable keyboard shortcuts
@@ -44,6 +45,7 @@ function App() {
       <AIPanel />
       <ThemeEditor />
       <SettingsPanel />
+      <PomodoroTimer isOpen={pomodoroTimerOpen} onClose={() => setPomodoroTimerOpen(false)} />
     </div>
   );
 }

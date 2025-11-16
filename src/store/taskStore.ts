@@ -25,12 +25,16 @@ interface TaskStore {
   aiPanelOpen: boolean;
   themeEditorOpen: boolean;
   settingsPanelOpen: boolean;
+  pomodoroTimerOpen: boolean;
   selectedTaskId: string | null;
+  searchQuery: string;
 
   setCommandPaletteOpen: (open: boolean) => void;
   setAIPanelOpen: (open: boolean, taskId?: string) => void;
   setThemeEditorOpen: (open: boolean) => void;
   setSettingsPanelOpen: (open: boolean) => void;
+  setPomodoroTimerOpen: (open: boolean) => void;
+  setSearchQuery: (query: string) => void;
 }
 
 export const useTaskStore = create<TaskStore>((set, get) => ({
@@ -43,7 +47,9 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   aiPanelOpen: false,
   themeEditorOpen: false,
   settingsPanelOpen: false,
+  pomodoroTimerOpen: false,
   selectedTaskId: null,
+  searchQuery: '',
 
   loadTasks: async () => {
     set({ loading: true, error: null });
@@ -129,4 +135,6 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
     set({ aiPanelOpen: open, selectedTaskId: taskId || null }),
   setThemeEditorOpen: (open: boolean) => set({ themeEditorOpen: open }),
   setSettingsPanelOpen: (open: boolean) => set({ settingsPanelOpen: open }),
+  setPomodoroTimerOpen: (open: boolean) => set({ pomodoroTimerOpen: open }),
+  setSearchQuery: (query: string) => set({ searchQuery: query }),
 }));

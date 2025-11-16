@@ -18,6 +18,7 @@ const CommandPalette = () => {
     setAIPanelOpen,
     setThemeEditorOpen,
     setSettingsPanelOpen,
+    setPomodoroTimerOpen,
   } = useTaskStore();
   const { presets, setTheme } = useThemeStore();
   const [search, setSearch] = useState('');
@@ -40,6 +41,15 @@ const CommandPalette = () => {
       icon: '✨',
       action: () => {
         setAIPanelOpen(true);
+        setCommandPaletteOpen(false);
+      },
+    },
+    {
+      id: 'pomodoro',
+      label: 'Pomodoro Timer',
+      icon: '🍅',
+      action: () => {
+        setPomodoroTimerOpen(true);
         setCommandPaletteOpen(false);
       },
     },

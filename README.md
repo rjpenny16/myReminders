@@ -20,6 +20,18 @@ Built with **Tauri** (Rust + TypeScript), **React**, and **Tailwind CSS**.
 
 ---
 
+## 📥 Download
+
+**Want to skip the setup?** Download pre-built installers from the [Releases](../../releases) page:
+
+- **Windows**: Download the `.msi` installer
+- **macOS**: Download the `.dmg` (Apple Silicon) or `.app.tar.gz` (Intel)
+- **Linux**: Download the `.AppImage` or `.deb` package
+
+Simply download, install, and run - no build tools required!
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites

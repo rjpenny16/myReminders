@@ -6,10 +6,12 @@ export const useKeyboardShortcuts = () => {
     setCommandPaletteOpen,
     setAIPanelOpen,
     setThemeEditorOpen,
+    setPomodoroTimerOpen,
     commandPaletteOpen,
     aiPanelOpen,
     themeEditorOpen,
     settingsPanelOpen,
+    pomodoroTimerOpen,
   } = useTaskStore();
 
   useEffect(() => {
@@ -27,6 +29,7 @@ export const useKeyboardShortcuts = () => {
           if (aiPanelOpen) setAIPanelOpen(false);
           if (themeEditorOpen) setThemeEditorOpen(false);
           if (settingsPanelOpen) setThemeEditorOpen(false);
+          if (pomodoroTimerOpen) setPomodoroTimerOpen(false);
         }
         return;
       }
@@ -49,7 +52,10 @@ export const useKeyboardShortcuts = () => {
       // /: Quick search/filter
       if (e.key === '/') {
         e.preventDefault();
-        setCommandPaletteOpen(true);
+        const searchInput = document.querySelector('.task-search-input') as HTMLInputElement;
+        if (searchInput) {
+          searchInput.focus();
+        }
         return;
       }
 
@@ -60,11 +66,19 @@ export const useKeyboardShortcuts = () => {
         return;
       }
 
+      // P: Pomodoro Timer
+      if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        setPomodoroTimerOpen(!pomodoroTimerOpen);
+        return;
+      }
+
       // Escape: Close all modals
       if (e.key === 'Escape') {
         if (commandPaletteOpen) setCommandPaletteOpen(false);
         if (aiPanelOpen) setAIPanelOpen(false);
         if (themeEditorOpen) setThemeEditorOpen(false);
+        if (pomodoroTimerOpen) setPomodoroTimerOpen(false);
         return;
       }
     };
@@ -79,8 +93,10 @@ export const useKeyboardShortcuts = () => {
     aiPanelOpen,
     themeEditorOpen,
     settingsPanelOpen,
+    pomodoroTimerOpen,
     setCommandPaletteOpen,
     setAIPanelOpen,
     setThemeEditorOpen,
+    setPomodoroTimerOpen,
   ]);
 };
