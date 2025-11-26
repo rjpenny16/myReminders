@@ -4,7 +4,7 @@ import QuickAddBar from '../QuickAdd/QuickAddBar';
 import './MainLayout.css';
 
 const MainLayout = () => {
-  const { tasks, searchQuery, setSearchQuery } = useTaskStore();
+  const { tasks, searchQuery, setSearchQuery, exportTasks } = useTaskStore();
 
   // Filter tasks based on search query
   const filterTasks = (taskList: typeof tasks) => {
@@ -42,6 +42,13 @@ const MainLayout = () => {
             ✕
           </button>
         )}
+        <button
+          className="quick-export-btn"
+          onClick={() => exportTasks()}
+          title="Export all tasks"
+        >
+          💾
+        </button>
       </div>
       <div className="sections-container">
         <TaskSection title="Today" tasks={todayTasks} section="today" />

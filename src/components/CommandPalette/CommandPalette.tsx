@@ -19,6 +19,9 @@ const CommandPalette = () => {
     setThemeEditorOpen,
     setSettingsPanelOpen,
     setPomodoroTimerOpen,
+    setExportMenuOpen,
+    exportTasks,
+    importTasks,
   } = useTaskStore();
   const { presets, setTheme } = useThemeStore();
   const [search, setSearch] = useState('');
@@ -78,6 +81,33 @@ const CommandPalette = () => {
       action: () => {
         setSettingsPanelOpen(true);
         setCommandPaletteOpen(false);
+      },
+    },
+    {
+      id: 'export-all',
+      label: 'Export All Tasks',
+      icon: '💾',
+      action: async () => {
+        setCommandPaletteOpen(false);
+        await exportTasks();
+      },
+    },
+    {
+      id: 'export-options',
+      label: 'Export Options...',
+      icon: '📤',
+      action: () => {
+        setExportMenuOpen(true);
+        setCommandPaletteOpen(false);
+      },
+    },
+    {
+      id: 'import-tasks',
+      label: 'Import Tasks',
+      icon: '📥',
+      action: async () => {
+        setCommandPaletteOpen(false);
+        await importTasks();
       },
     },
     ...presets.map((preset, i) => ({
