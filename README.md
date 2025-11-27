@@ -22,6 +22,35 @@ Built with **Tauri** (Rust + TypeScript), **React**, and **Tailwind CSS**.
 
 ## 📥 Download
 
+### Option 1: Automatic Download (Recommended)
+
+Run our automatic download script that detects your platform and downloads the latest version:
+
+**Linux/macOS:**
+```bash
+curl -sSL https://raw.githubusercontent.com/rjpenny16/myReminders/main/download.sh | bash
+```
+
+Or download and run manually:
+```bash
+wget https://raw.githubusercontent.com/rjpenny16/myReminders/main/download.sh
+chmod +x download.sh
+./download.sh
+```
+
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/rjpenny16/myReminders/main/download.ps1 | iex
+```
+
+The script will:
+- ✅ Detect your operating system and architecture automatically
+- ✅ Download the correct installer for your platform
+- ✅ Offer to install the app immediately
+- ✅ No manual searching or guessing required!
+
+### Option 2: Manual Download
+
 **Want to skip the setup?** Download pre-built installers from the [Releases](../../releases) page:
 
 - **Windows**: Download the `.msi` installer
@@ -29,6 +58,41 @@ Built with **Tauri** (Rust + TypeScript), **React**, and **Tailwind CSS**.
 - **Linux**: Download the `.AppImage` or `.deb` package
 
 Simply download, install, and run - no build tools required!
+
+---
+
+## 💻 System Requirements
+
+### Minimum Requirements
+
+**Operating System:**
+- **Windows**: Windows 10 (64-bit) or later
+- **macOS**: macOS 10.15 Catalina or later
+- **Linux**: Ubuntu 20.04, Debian 11, Fedora 36, or equivalent (64-bit)
+
+**Hardware:**
+- **CPU**: Dual-core processor (2 GHz or faster)
+- **RAM**: 4 GB (8 GB recommended for AI features)
+- **Disk Space**: 200 MB for application + 2-4 GB for AI models (if using Ollama)
+- **Display**: Any resolution supported (optimized for ultrawide displays)
+
+**Network:**
+- Internet connection required for initial download and AI model installation
+- No internet required for daily use (fully offline-capable)
+
+### Recommended for Best Experience
+
+- **Display**: 8.8″ ultrawide display (1920×480, 1280×400, or 1024×256)
+- **RAM**: 8 GB or more (for smooth AI drafting with Ollama)
+- **Disk Space**: 5 GB free space (for multiple AI models)
+- **Ollama**: Latest version for AI email drafting features
+
+### Optional Components
+
+- **Ollama** (for AI features): Free download from [ollama.com](https://ollama.com)
+  - Requires additional 2-4 GB per model (e.g., llama3.1)
+  - Works with any Ollama-compatible model
+  - Can run in embedded or external mode
 
 ---
 

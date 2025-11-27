@@ -13,6 +13,7 @@ pub fn run() {
         .plugin(tauri_plugin_sql::Builder::default().build())
         .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_shell::init())
         .setup(|app| {
             let app_handle = app.handle().clone();
 
@@ -48,6 +49,7 @@ pub fn run() {
             commands::export_tasks,
             commands::export_tasks_auto,
             commands::import_tasks,
+            commands::check_for_updates,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

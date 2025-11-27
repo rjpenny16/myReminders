@@ -262,3 +262,84 @@ fn cleanup_old_backups(backup_dir: &std::path::Path, keep_count: usize) -> Resul
 
     Ok(())
 }
+
+#[derive(serde::Serialize, serde::Deserialize, Debug)]
+pub struct UpdateInfo {
+    pub available: bool,
+    pub current_version: String,
+    pub latest_version: String,
+    pub download_url: String,
+    pub release_notes: String,
+    pub published_at: String,
+}
+
+#[tauri::command]
+pub async fn check_for_updates() -> Result<UpdateInfo, String> {
+    // Current version from Cargo.toml
+    const CURRENT_VERSION: &str = env!("CARGO_PKG_VERSION");
+
+    // GitHub repository info
+    const REPO_OWNER: &str = "rjpenny16";
+    const REPO_NAME: &str = "myReminders";
+
+    let api_url = format!(
+        "https://api.github.com/repos/{}/{}/releases/latest",
+        REPO_OWNER, REPO_NAME
+    );
+
+    // Make HTTP request to GitHub API
+    let client = reqwest::Client::builder()
+        .user_agent("ultrawide-todo-app")
+        .build()
+        .map_err(|e| format!("Failed to create HTTP client: {}", e))?;
+
+    let response = client
+        .get(&api_url)
+        .send()
+        .await
+        .map_err(|e| format!("Failed to fetch release info: {}", e))?;
+
+    if !response.status().is_success() {
+        return Err(format!("GitHub API returned status: {}", response.status()));
+    }
+
+    let release: serde_json::Value = response
+        .json()
+        .await
+        .map_err(|e| format!("Failed to parse release JSON: {}", e))?;
+
+    // Extract release information
+    let latest_version = release["tag_name"]
+        .as_str()
+        .unwrap_or(CURRENT_VERSION)
+        .trim_start_matches('v')
+        .to_string();
+
+    let download_url = release["html_url"]
+        .as_str()
+        .unwrap_or("")
+        .to_string();
+
+    let release_notes = release["body"]
+        .as_str()
+        .unwrap_or("No release notes available.")
+        .to_string();
+
+    let published_at = release["published_at"]
+        .as_str()
+        .unwrap_or("")
+        .to_string();
+
+    // Compare versions (simple string comparison for now)
+    // In production, you'd want to use semver crate for proper version comparison
+    let available = latest_version != CURRENT_VERSION && !latest_version.is_empty();
+
+    Ok(UpdateInfo {
+        available,
+        current_version: CURRENT_VERSION.to_string(),
+        latest_version,
+        download_url,
+        release_notes,
+        published_at,
+    })
+}
