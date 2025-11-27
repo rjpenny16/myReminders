@@ -12,6 +12,7 @@ pub fn run() {
         .plugin(tauri_plugin_notification::init())
         .plugin(tauri_plugin_sql::Builder::default().build())
         .plugin(tauri_plugin_clipboard_manager::init())
+        .plugin(tauri_plugin_dialog::init())
         .setup(|app| {
             let app_handle = app.handle().clone();
 
@@ -44,6 +45,9 @@ pub fn run() {
             commands::launch_ollama_app,
             commands::clipboard_copy,
             commands::toggle_always_on_top,
+            commands::export_tasks,
+            commands::export_tasks_auto,
+            commands::import_tasks,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
