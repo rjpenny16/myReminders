@@ -11,6 +11,8 @@ import SettingsPanel from './components/Settings/SettingsPanel';
 import PomodoroTimer from './components/Pomodoro/PomodoroTimer';
 import Notification from './components/Notification/Notification';
 import ExportMenu from './components/ExportMenu/ExportMenu';
+import UpdateNotification from './components/UpdateNotification/UpdateNotification';
+import FirstRunWizard from './components/FirstRunWizard/FirstRunWizard';
 import './styles/App.css';
 
 function App() {
@@ -110,6 +112,8 @@ function App() {
       <PomodoroTimer isOpen={pomodoroTimerOpen} onClose={() => setPomodoroTimerOpen(false)} />
       <ExportMenu />
       <Notification />
+      <UpdateNotification />
+      <FirstRunWizard />
     </div>
   );
 }
